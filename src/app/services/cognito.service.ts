@@ -28,7 +28,6 @@ export class CognitoService {
   }
 
   public signUp(user: IUser): Promise<any> {
-    this.addUser(user);
     return Auth.signUp({
         username: user.email,
         password: user.password
@@ -36,6 +35,7 @@ export class CognitoService {
   }
 
   public confirmSignUp(user: IUser): Promise<any> {
+    this.saveUser(user);
     return Auth.confirmSignUp(user.email, user.code);
   }
 
@@ -65,6 +65,14 @@ export class CognitoService {
   public addUser(user: IUser): Observable<IUser>{
     console.log("posting: " + user.email);
     return this.http.post<IUser>(`http://localhost:8080/user`, user);
+  }
+
+  //save user
+  saveUser(user: IUser){
+    this.addUser(user).subscribe(data => {
+      console.log(data);
+    },
+    (error: Error) => console.log(error));
   }
 
 }
