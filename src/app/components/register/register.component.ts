@@ -18,7 +18,7 @@ export class RegisterComponent {
   }
 
   public signUp(): void{
-    console.log("signUp");
+    //console.log("signUp");
     this.cognitoService.signUp(this.user).then(() => {
       this.isConfirm = true;
     }).catch(() => {

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Amplify, Auth } from 'aws-amplify';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export interface IUser {
   email: string;
@@ -17,7 +18,9 @@ export interface IUser {
 export class CognitoService {
   private authenticationSubject: BehaviorSubject<any>;
 
-  constructor() {
+  private apiServerUrl = environment.apiBaseUrl;
+
+  constructor(private http: HttpClient) {
     Amplify.configure({
       Auth: environment.cognito
     });
@@ -25,6 +28,7 @@ export class CognitoService {
   }
 
   public signUp(user: IUser): Promise<any> {
+    this.addUser(user);
     return Auth.signUp({
         username: user.email,
         password: user.password
@@ -36,6 +40,7 @@ export class CognitoService {
   }
 
   public signIn(user: IUser): Promise<any> {
+    //console.log(user);
     return Auth.signIn(user.email, user.password).then(() => {
         this.authenticationSubject.next(true);
     });
@@ -53,6 +58,13 @@ export class CognitoService {
 
   public isAuthenticated(): boolean {
     return this.authenticationSubject.value
+  }
+
+
+  //add user to db
+  public addUser(user: IUser): Observable<IUser>{
+    console.log("posting: " + user.email);
+    return this.http.post<IUser>(`http://localhost:8080/user`, user);
   }
 
 }
