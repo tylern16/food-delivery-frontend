@@ -1,0 +1,29 @@
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Doordash</h1>
+      <p>Use this app to register your customers and easily add their dependents. It includes order processing with photo ID upload so your customers can securely make purchase orders.</p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="card login">
+      <div class="card-header">
+        <h1>Login or 
+          <a href="/register">Register</a>
+        </h1>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          Email: <input type="text" name="email" [(ngModel)]="user.email">
+        </div>
+        <div class="row">
+          Password: <input type="password" name="password" [(ngModel)]="user.password">
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <button (click)="signIn()" class="btn btn-success login-btn">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>

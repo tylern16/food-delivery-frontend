@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+
+#main-content {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 3rem;    /* Footer height */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;            /* Footer height */
+}
+
+.btn {
+    margin: 1em;
+} 
+
+i {
+    cursor: pointer; 
+}
+
+/* AUTH */
+
+.login {
+    width: 60%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.login-btn {
+    width: 95%;
+}
