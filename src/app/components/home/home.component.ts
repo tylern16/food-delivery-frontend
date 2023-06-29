@@ -11,6 +11,4 @@ export class HomeComponent {
 
   constructor(private userService: UserService) {}
 
-  user : IUser = this.userService.currentUser;
-
 }

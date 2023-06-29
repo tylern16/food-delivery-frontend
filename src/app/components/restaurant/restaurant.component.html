@@ -1,0 +1,34 @@
+<div *ngIf="restaurants.length==0" id="no-dependents">
+    <h3>You have no Restaurants. Add them below.</h3>
+    <button class="btn btn-success" (click)="goToAddRestaurants()">Add Restaurant</button>
+</div>
+
+
+
+<div *ngIf="restaurants.length>0" >
+    <div id="dependents-title">
+        <h2>Your Restaurants</h2>
+    </div>
+    
+    <table class="table table-striped table-bordered" id="dependent-table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">License</th>
+            <th scope="col"> View Menu</th>
+            <th scope="col">Delete Restaurant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let restaurant of restaurants">
+            <th>{{restaurant.name}}</th>
+            <td>{{restaurant.license}}</td>
+            <!-- <td class="delete-dependent"><i class="fa fa-trash" (click)="openModal(dependent.id)"></i></td> -->
+            <button (click)="viewDishes(restaurant.id)">View Menu</button>
+            <button (click)="deleteRestaurant(restaurant.id)">Delete</button>
+          </tr>
+        </tbody>
+    </table>
+    
+    <button class="btn btn-success" (click)="goToAddRestaurants()">Add Restaurant</button>
+</div>

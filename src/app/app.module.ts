@@ -11,6 +11,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
+import { DishesComponent } from './components/dishes/dishes.component';
+import { AddDishesComponent } from './components/add-dishes/add-dishes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { LogoutComponent } from './components/logout/logout.component';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    RestaurantComponent,
+    AddRestaurantComponent,
+    DishesComponent,
+    AddDishesComponent
   ],
   imports: [
     BrowserModule,

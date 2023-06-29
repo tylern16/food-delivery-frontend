@@ -1,0 +1,18 @@
+
+
+<form (ngSubmit)="onSubmit()" id="add-dish-form">
+    <div class="form-group">
+      <h3>Add A New Dish</h3><br><br>
+
+      <label for="name">Dish Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" 
+      [(ngModel)]="dish.name" name="name"
+      aria-describedby="emailHelp" placeholder="Enter Dish Name">
+
+      <label for="name">Dish Cost</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" 
+      [(ngModel)]="dish.cost" name="email"
+      aria-describedby="emailHelp" placeholder="Enter Dish Cost">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>

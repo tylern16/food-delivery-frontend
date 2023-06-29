@@ -1,0 +1,32 @@
+<div *ngIf="dishes.length==0" id="no-dependents">
+    <h3>This Restaurant has no Dishes. Add them below.</h3>
+    <button class="btn btn-success" (click)="goToAddDishes()">Add Dependent</button>
+</div>
+
+
+
+<div *ngIf="dishes.length>0" id="no-dependents">
+    <div id="dependents-title">
+        <h2>Dishes</h2>
+    </div>
+    
+    <table class="table table-striped table-bordered" id="dependent-table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dish of dishes">
+            <th>{{dish.name}}</th>
+            <td>${{dish.cost}}</td>
+            <!-- <td class="delete-dependent"><i class="fa fa-trash" (click)="openModal(dependent.id)"></i></td> -->
+            <button (click)="deleteDish(dish.id)">Delete</button>
+          </tr>
+        </tbody>
+    </table>
+    
+    <button class="btn btn-success" (click)="goToAddDishes()">Add Dish</button>
+</div>
