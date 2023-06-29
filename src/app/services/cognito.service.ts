@@ -3,8 +3,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Amplify, Auth } from 'aws-amplify';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserService } from './user.service';
 
 export interface IUser {
+  id: number;
   email: string;
   password: string;
   code: string;
@@ -18,9 +20,7 @@ export interface IUser {
 export class CognitoService {
   private authenticationSubject: BehaviorSubject<any>;
 
-  private apiServerUrl = environment.apiBaseUrl;
-
-  constructor(private http: HttpClient) {
+  constructor(private userService: UserService) {
     Amplify.configure({
       Auth: environment.cognito
     });
@@ -35,7 +35,7 @@ export class CognitoService {
   }
 
   public confirmSignUp(user: IUser): Promise<any> {
-    this.saveUser(user);
+    this.userService.saveUser(user);
     return Auth.confirmSignUp(user.email, user.code);
   }
 
@@ -61,18 +61,18 @@ export class CognitoService {
   }
 
 
-  //add user to db
-  public addUser(user: IUser): Observable<IUser>{
-    console.log("posting: " + user.email);
-    return this.http.post<IUser>(`http://localhost:8080/user`, user);
-  }
+  // //add user to db
+  // public addUser(user: IUser): Observable<IUser>{
+  //   console.log("posting: " + user.email);
+  //   return this.http.post<IUser>(`http://localhost:8080/user`, user);
+  // }
 
-  //save user
-  saveUser(user: IUser){
-    this.addUser(user).subscribe(data => {
-      console.log(data);
-    },
-    (error: Error) => console.log(error));
-  }
+  // //save user
+  // saveUser(user: IUser){
+  //   this.addUser(user).subscribe(data => {
+  //     console.log(data);
+  //   },
+  //   (error: Error) => console.log(error));
+  // }
 
 }
