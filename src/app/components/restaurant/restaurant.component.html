@@ -14,7 +14,7 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">License</th>
+            <th scope="col">View/Add License</th>
             <th scope="col"> View Menu</th>
             <th scope="col">Delete Restaurant</th>
           </tr>
@@ -22,10 +22,19 @@
         <tbody>
           <tr *ngFor="let restaurant of restaurants">
             <th>{{restaurant.name}}</th>
-            <td>{{restaurant.license}}</td>
+            <td *ngIf="restaurant.hasLicense==true">
+              View License
+            </td>
+            <td *ngIf="restaurant.hasLicense==false">
+              <button (click)="goToAddLicense(restaurant.id)">Add License</button>
+            </td>
             <!-- <td class="delete-dependent"><i class="fa fa-trash" (click)="openModal(dependent.id)"></i></td> -->
-            <button (click)="viewDishes(restaurant.id)">View Menu</button>
-            <button (click)="deleteRestaurant(restaurant.id)">Delete</button>
+            <td>
+              <button (click)="viewDishes(restaurant.id)">View Menu</button>
+            </td>
+            <td>
+              <button (click)="deleteRestaurant(restaurant.id)">Delete</button>
+            </td>
           </tr>
         </tbody>
     </table>

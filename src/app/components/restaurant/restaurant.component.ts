@@ -15,6 +15,7 @@ export class RestaurantComponent implements OnInit{
   public restaurants: Restaurant[] = [];
 
   userId: number = this.userService.currentUser.id;
+  //userId: number = 52;
 
 
   constructor(
@@ -59,6 +60,10 @@ export class RestaurantComponent implements OnInit{
 
   viewDishes(restaurantId: number) {
     this.router.navigate(['/dish/' + restaurantId]);
+  }
+
+  goToAddLicense(restaurantId: number) {
+    this.router.navigate(['add/license/' + restaurantId]);
   }
 
 

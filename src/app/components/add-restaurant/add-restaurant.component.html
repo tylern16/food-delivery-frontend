@@ -10,9 +10,11 @@
       aria-describedby="emailHelp" placeholder="Enter Restaurant Name">
 
       <label for="name">Dependent License</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" 
+      <input type="text" required="true" class="form-control" id="exampleInputEmail1" 
       [(ngModel)]="restaurant.license" name="email"
       aria-describedby="emailHelp" placeholder="Enter Restaurant License">
+
+      
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
 </form>

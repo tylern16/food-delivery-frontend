@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Restaurant } from 'src/app/restaurant';
 import { RestaurantService } from 'src/app/services/restaurant.service';
@@ -9,12 +11,14 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './add-restaurant.component.html',
   styleUrls: ['./add-restaurant.component.css']
 })
-export class AddRestaurantComponent {
+export class AddRestaurantComponent{
 
   constructor(
     private userService: UserService,
     private restaurantService: RestaurantService,
-    private router: Router
+    private router: Router,
+    public fb: FormBuilder,
+    private http: HttpClient
   ) {}
 
   restaurant: Restaurant = new Restaurant();
