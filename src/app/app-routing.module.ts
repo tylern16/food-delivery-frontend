@@ -11,10 +11,11 @@ import { AddRestaurantComponent } from './components/add-restaurant/add-restaura
 import { DishesComponent } from './components/dishes/dishes.component';
 import { AddDishesComponent } from './components/add-dishes/add-dishes.component';
 import { AddLicenseComponent } from './components/add-license/add-license.component';
+import { LicenseComponent } from './components/license/license.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, canActivate: [RouteGuardService]}, //, canActivate: [RouteGuardService]
-  {path: 'home', component: HomeComponent, canActivate: [RouteGuardService]}, //, canActivate: [RouteGuardService]
+  {path: '', component: HomeComponent}, //, canActivate: [RouteGuardService]
+  {path: 'home', component: HomeComponent}, //, canActivate: [RouteGuardService]
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'logout', component: LogoutComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'dish/:restaurantId', component: DishesComponent},
   {path: 'add/dish/:restaurantId', component: AddDishesComponent},
   {path: 'add/license/:restaurantId', component: AddLicenseComponent},
+  {path: 'license/:restaurantId', component: LicenseComponent},
 
    
 ];

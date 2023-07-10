@@ -15,9 +15,9 @@ footer {
     height: 3rem;            /* Footer height */
 }
 
-.btn {
+/* .btn {
     margin: 1em;
-} 
+}  */
 
 i {
     cursor: pointer; 
@@ -38,3 +38,45 @@ button {
 .login-btn {
     width: 95%;
 }
+
+.center {
+    text-align: center;
+    margin: auto auto;
+}
+
+/* Restaurant Card */
+#restaurants-title{
+    text-align: center;
+}
+
+.restaurant-card {
+    width: 60%;
+    margin: 2em auto;
+}
+
+.btn-view-dish {
+    margin: auto;
+}
+
+.add-restaurant-btm {
+    margin: 1em auto;
+    text-align: center;
+}
+
+.add-restaurant-top {
+    margin: 1em auto;
+    text-align: right;
+}
+
+/* Home */
+#home-container {
+    padding: 6em;
+    background-color: rgb(139, 139, 139);
+}
+
+#home-content {
+    width: 70%;
+    margin: 6em auto;
+}
+
+

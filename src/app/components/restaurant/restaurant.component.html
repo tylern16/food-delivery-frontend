@@ -3,9 +3,48 @@
     <button class="btn btn-success" (click)="goToAddRestaurants()">Add Restaurant</button>
 </div>
 
+<div *ngIf="restaurants.length>0">
+  <div class="add-restaurant-top">
+    <button class="btn btn-success " (click)="goToAddRestaurants()">Add Restaurant</button>
+  </div>
+
+  <div id="restaurants-title">
+    <h2>Your Restaurants</h2>
+  </div>
+
+  <div *ngFor="let restaurant of restaurants" class="card restaurant-card">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title">{{restaurant.name}}</h5>
+        <i (click)="deleteRestaurant(restaurant.id)" class="fa-solid fa-trash"></i>
+        <!-- <div>Delete</div> -->
+      </div>
+      
+      <h6 class="card-subtitle mb-2 text-muted">{{restaurant.cuisine}}</h6>
+      <p class="card-text">{{restaurant.address}}</p>
+      <div>Registration: 
+        <span *ngIf="restaurant.hasLicense==true">Successfully Registered</span>
+        <span *ngIf="restaurant.hasLicense==false">
+          <button class="btn btn-success" (click)="goToAddLicense(restaurant.id)">Add License</button>
+        </span>
+      </div>
+      <div class="center btn-view-dish">
+        
+        <button class="btn btn-info" (click)="viewDishes(restaurant.id)">View Menu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="add-restaurant-btm">
+  <button class="btn btn-success " (click)="goToAddRestaurants()">Add Restaurant</button>
+</div>
 
 
-<div *ngIf="restaurants.length>0" >
+
+
+
+<!-- <div *ngIf="restaurants.length>0">
     <div id="dependents-title">
         <h2>Your Restaurants</h2>
     </div>
@@ -14,6 +53,8 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
+            <th>Cuisine</th>
+            <th>Address</th>
             <th scope="col">View/Add License</th>
             <th scope="col"> View Menu</th>
             <th scope="col">Delete Restaurant</th>
@@ -22,13 +63,13 @@
         <tbody>
           <tr *ngFor="let restaurant of restaurants">
             <th>{{restaurant.name}}</th>
-            <td *ngIf="restaurant.hasLicense==true">
-              View License
-            </td>
+            <td>{{restaurant.cuisine}}</td>
+            <td>{{restaurant.address}}</td>
+            <td *ngIf="restaurant.hasLicense==true">Successfully Registered</td>
             <td *ngIf="restaurant.hasLicense==false">
               <button (click)="goToAddLicense(restaurant.id)">Add License</button>
             </td>
-            <!-- <td class="delete-dependent"><i class="fa fa-trash" (click)="openModal(dependent.id)"></i></td> -->
+            <td class="delete-dependent"><i class="fa fa-trash" (click)="openModal(dependent.id)"></i></td> 
             <td>
               <button (click)="viewDishes(restaurant.id)">View Menu</button>
             </td>
@@ -39,5 +80,4 @@
         </tbody>
     </table>
     
-    <button class="btn btn-success" (click)="goToAddRestaurants()">Add Restaurant</button>
-</div>
+</div> -->

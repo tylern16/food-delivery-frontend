@@ -5,13 +5,18 @@
       <h3>Add A New Restaurant</h3><br><br>
 
       <label for="name">Restaurant Name</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" 
+      <input type="text" required="true" class="form-control" id="exampleInputEmail1" 
       [(ngModel)]="restaurant.name" name="name"
       aria-describedby="emailHelp" placeholder="Enter Restaurant Name">
 
-      <label for="name">Dependent License</label>
-      <input type="text" required="true" class="form-control" id="exampleInputEmail1" 
-      [(ngModel)]="restaurant.license" name="email"
+      <label for="name">Cuisine</label>
+      <input type="text"  class="form-control" id="exampleInputEmail1" 
+      [(ngModel)]="restaurant.cuisine" name="email"
+      aria-describedby="emailHelp" placeholder="Enter Restaurant License">
+
+      <label for="name">Address</label>
+      <input type="a" required="true" class="form-control" id="exampleInputEmail1" 
+      [(ngModel)]="restaurant.address" name="email"
       aria-describedby="emailHelp" placeholder="Enter Restaurant License">
 
       

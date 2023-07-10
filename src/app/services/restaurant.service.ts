@@ -17,8 +17,8 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`${this.apiServerUrl}/restaurant/all`)
   }
 
-  public getRestaurantByRestaurantId(restaurantId: number): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(`${this.apiServerUrl}/restaurant/${restaurantId}`)
+  public getRestaurantByRestaurantId(restaurantId: number): Observable<Restaurant> {
+    return this.http.get<Restaurant>(`${this.apiServerUrl}/restaurant/${restaurantId}`)
   }
 
   public getRestaurantsByUserId(userId: number): Observable<Restaurant[]> {
@@ -31,5 +31,9 @@ export class RestaurantService {
 
   public deleteRestaurant(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/restaurant/${id}`);
+  }
+
+  public updateRestaurant(id: number, newRestaurant: Restaurant): Observable<Restaurant> {
+    return this.http.put<Restaurant>(`${this.apiServerUrl}/restaurant/${id}`, newRestaurant);
   }
 }

@@ -1,20 +1,28 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Restaurant } from 'src/app/restaurant';
 import { LicenseService } from 'src/app/services/license.service';
+import { RestaurantService } from 'src/app/services/restaurant.service';
+import { RestaurantComponent } from '../restaurant/restaurant.component';
 
 @Component({
   selector: 'app-add-license',
   templateUrl: './add-license.component.html',
   styleUrls: ['./add-license.component.css']
 })
-export class AddLicenseComponent {
+export class AddLicenseComponent implements OnInit{
 
   constructor(
     private licenseService: LicenseService,
     private route: ActivatedRoute,
+    private restaurantService: RestaurantService,
   ) { }
+
+  ngOnInit(): void {
+    this.loadRestaurant();
+  }
 
   selectedFiles?: FileList;
   currentFile?: File;
@@ -24,6 +32,17 @@ export class AddLicenseComponent {
 
   fileInfos?: Observable<any>;
 
+  restaurant!: Restaurant;
+  
+  loadRestaurant() {
+    this.restaurantService.getRestaurantByRestaurantId(this.restaurantId).subscribe(
+      (data) => {
+        this.restaurant = data;
+        console.log(this.restaurant);
+      }
+    )
+  }
+
 
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
@@ -31,6 +50,8 @@ export class AddLicenseComponent {
 
   upload(): void {
     this.progress = 0;
+
+    this.setHasLicenseToTrue();
 
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
@@ -64,6 +85,22 @@ export class AddLicenseComponent {
 
       this.selectedFiles = undefined;
     }
+
+    
+  }
+
+
+  setHasLicenseToTrue() {
+    this.restaurant.hasLicense = true;
+    console.log(this.restaurant);
+    this.restaurantService.updateRestaurant(this.restaurantId, this.restaurant).subscribe(
+      (response) => {
+        console.log(response); 
+      },
+      (error: Error) => {
+        console.log(error)
+      }
+    )
   }
 
 }

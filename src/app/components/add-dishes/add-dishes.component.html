@@ -9,10 +9,17 @@
       [(ngModel)]="dish.name" name="name"
       aria-describedby="emailHelp" placeholder="Enter Dish Name">
 
-      <label for="name">Dish Cost</label>
+      <label for="name">Description</label>
+      <input type="text-area" class="form-control" id="exampleInputEmail1" 
+      [(ngModel)]="dish.description" name="name"
+      aria-describedby="emailHelp" placeholder="Enter Dish Name">
+
+      <label for="name">Price</label>
       <input type="number" class="form-control" id="exampleInputEmail1" 
       [(ngModel)]="dish.cost" name="email"
       aria-describedby="emailHelp" placeholder="Enter Dish Cost">
+
+
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
 </form>
