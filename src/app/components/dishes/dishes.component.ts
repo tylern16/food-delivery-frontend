@@ -16,6 +16,7 @@ export class DishesComponent {
   public dishes: Dish[] = [];
 
   public currentDishId: number = 0;
+  dishToDeleteId: number = 0;
 
   restaurantId: number = this.route.snapshot.params['restaurantId'];
 
@@ -61,6 +62,11 @@ export class DishesComponent {
         alert(error);
       }
     )
+
+    const modalDiv = document.getElementById("myModal");
+    if (modalDiv != null) {
+      modalDiv.style.display = 'none';
+    }
   }
 
   getRestaurant() {
@@ -71,6 +77,23 @@ export class DishesComponent {
       },
       (error) => console.log(error)
     );
+  }
+
+  openModal(dishId : number) {
+    this.dishToDeleteId = dishId;
+    //console.log("open modal");
+    const modalDiv = document.getElementById('myModal');
+    if (modalDiv != null) {
+      modalDiv.style.display = 'block';
+    }
+  }
+
+  closeModal() {
+    console.log("close modal");
+    const modalDiv = document.getElementById("myModal");
+    if (modalDiv != null) {
+      modalDiv.style.display = 'none';
+    }
   }
 
 }

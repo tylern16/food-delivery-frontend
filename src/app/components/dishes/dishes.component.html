@@ -18,7 +18,7 @@
             <h6>${{dish.cost}}</h6>
           </div>          
           <p class="card-text">{{dish.description}}</p>
-          <button class="btn btn-danger" (click)="deleteDish(dish.id)">Delete</button>
+          <button class="btn btn-danger" (click)="openModal(dish.id)">Delete</button>
       </div>
     </div>
     <div class="card dish-card">
@@ -27,6 +27,24 @@
   </div>
 
   <!-- <button class="btn btn-success" (click)="goToAddDishes()">Add Dish</button> -->
+</div>
+
+<div id="myModal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Are You Sure?</h4>
+        <button type="button" (click)="closeModal()" class="close" data-dismiss="modal">&times;</button>        
+      </div>
+      <!-- <div class="modal-body">
+        <p>Are you sure you want to delete?</p>
+      </div> -->
+      <div class="modal-footer">
+        <button type="button" (click)="deleteDish(dishToDeleteId)" class="btn btn-primary" data-dismiss="modal">Delete </button>
+        <button type="button" (click)="closeModal()" class="btn btn-secondary" data-dismiss="modal">Cancel </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 

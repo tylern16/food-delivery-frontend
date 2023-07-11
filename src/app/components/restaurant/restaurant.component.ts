@@ -14,8 +14,11 @@ export class RestaurantComponent implements OnInit{
 
   public restaurants: Restaurant[] = [];
 
-  //userId: number = this.userService.currentUser.id;
-  userId: number = 52;
+  currentRestaurantId!: number;
+  currentRestaurantName!: string;
+
+  userId: number = this.userService.currentUser.id;
+  //userId: number = 52;
 
 
   constructor(
@@ -56,6 +59,11 @@ export class RestaurantComponent implements OnInit{
         alert(error);
       }
     )
+
+    const modalDiv = document.getElementById("myModal");
+    if (modalDiv != null) {
+      modalDiv.style.display = 'none';
+    }
   }
 
   viewDishes(restaurantId: number) {
@@ -70,5 +78,32 @@ export class RestaurantComponent implements OnInit{
     this.router.navigate(['license/' + restaurantId]);
   }
 
+  openModal(restaurantId : number) {
+    this.getRestaurantName(restaurantId);
+
+    this.currentRestaurantId = restaurantId;
+    //console.log("open modal");
+    const modalDiv = document.getElementById('myModal');
+    if (modalDiv != null) {
+      modalDiv.style.display = 'block';
+    }
+  }
+
+  closeModal() {
+    console.log("close modal");
+    const modalDiv = document.getElementById("myModal");
+    if (modalDiv != null) {
+      modalDiv.style.display = 'none';
+    }
+  }
+
+  getRestaurantName(id: number){
+    this.restaurantService.getRestaurantByRestaurantId(id).subscribe(
+      (data) => {
+        this.currentRestaurantName = data.name;
+      },
+      error => console.log(error)
+    );
+  }
 
 }
