@@ -1,11 +1,36 @@
-<div *ngIf="dishes.length==0" id="no-dependents">
+<div *ngIf="dishes.length==0" id="no-dishes">
     <h3>This Restaurant has no Dishes. Add them below.</h3>
-    <button class="btn btn-success" (click)="goToAddDishes()">Add Dependent</button>
+    <button class="btn btn-success" (click)="goToAddDishes()">Add Menu Item</button>
+</div>
+
+<div *ngIf="dishes.length>0" id="no-dependents">
+  <div id="dishes-title" class="d-flex justify-content-around">
+      <div></div>
+      <h2>{{restaurant.name}}</h2>
+      <button class="btn btn-success" (click)="goToAddDishes()">Add Menu Item</button>
+  </div>
+
+  <div class="dish-container">
+    <div *ngFor="let dish of dishes" class="card dish-card">
+      <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title">{{dish.name}}</h5>
+            <h6>${{dish.cost}}</h6>
+          </div>          
+          <p class="card-text">{{dish.description}}</p>
+          <button class="btn btn-danger" (click)="deleteDish(dish.id)">Delete</button>
+      </div>
+    </div>
+    <div class="card dish-card">
+      <button id="add-dish" class="btn btn-success" (click)="goToAddDishes()">+New Menu Item</button>
+    </div>
+  </div>
+
+  <!-- <button class="btn btn-success" (click)="goToAddDishes()">Add Dish</button> -->
 </div>
 
 
-
-<div *ngIf="dishes.length>0" id="no-dependents">
+<!-- <div *ngIf="dishes.length>0" id="no-dependents">
     <div id="dependents-title">
         <h2>Dishes</h2>
     </div>
@@ -24,11 +49,11 @@
             <th>{{dish.name}}</th>
             <td>{{dish.description}}</td>
             <td>${{dish.cost}}</td>
-            <!-- <td class="delete-dependent"><i class="fa fa-trash" (click)="openModal(dependent.id)"></i></td> -->
+            <td class="delete-dependent"><i class="fa fa-trash" (click)="openModal(dependent.id)"></i></td>
             <button (click)="deleteDish(dish.id)">Delete</button>
           </tr>
         </tbody>
     </table>
     
     <button class="btn btn-success" (click)="goToAddDishes()">Add Dish</button>
-</div>
+</div> -->

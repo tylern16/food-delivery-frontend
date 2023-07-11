@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dish } from 'src/app/dish';
+import { Restaurant } from 'src/app/restaurant';
 import { DishService } from 'src/app/services/dish.service';
+import { RestaurantService } from 'src/app/services/restaurant.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,16 +19,20 @@ export class DishesComponent {
 
   restaurantId: number = this.route.snapshot.params['restaurantId'];
 
+  restaurant: Restaurant = new Restaurant();
+
   constructor(
     private route: ActivatedRoute,
     private dishService: DishService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private restaurantService: RestaurantService
   ){}
 
   ngOnInit(): void {
     console.log("customerId:" + this.restaurantId);
     this.getDishes(this.restaurantId);
+    this.getRestaurant();
   }
 
   getDishes(restaurantId: number) {
@@ -55,6 +61,16 @@ export class DishesComponent {
         alert(error);
       }
     )
+  }
+
+  getRestaurant() {
+    this.restaurantService.getRestaurantByRestaurantId(this.restaurantId).subscribe(
+      (data) => {
+        this.restaurant = data;
+        console.log(this.restaurant)
+      },
+      (error) => console.log(error)
+    );
   }
 
 }
