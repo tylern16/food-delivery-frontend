@@ -1,25 +1,25 @@
 
 
 <form (ngSubmit)="onSubmit()" id="add-dish-form">
-    <div class="form-group">
-      <h3>Add A New Dish</h3><br><br>
+    <div class="form-group" style="width:80%">
+      <h3>New Menu Item</h3><br><br>
 
-      <label for="name">Dish Name</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" 
+      <label for="name">Menu Item Name</label>
+      <input type="text" class="form-control dish-input" id="exampleInputEmail1" 
       [(ngModel)]="dish.name" name="name"
-      aria-describedby="emailHelp" placeholder="Enter Dish Name">
+      aria-describedby="emailHelp" placeholder="Name">
 
       <label for="name">Description</label>
-      <input type="text-area" class="form-control" id="exampleInputEmail1" 
+      <input type="text-area" class="form-control dish-input" id="exampleInputEmail1" 
       [(ngModel)]="dish.description" name="name"
-      aria-describedby="emailHelp" placeholder="Enter Dish Name">
+      aria-describedby="emailHelp" placeholder="Description">
 
       <label for="name">Price</label>
-      <input type="number" class="form-control" id="exampleInputEmail1" 
+      <input type="number" class="form-control dish-input" id="exampleInputEmail1" 
       [(ngModel)]="dish.cost" name="email"
-      aria-describedby="emailHelp" placeholder="Enter Dish Cost">
+      aria-describedby="emailHelp" placeholder="0">
 
 
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success" id="submit-dish">Submit</button>
 </form>

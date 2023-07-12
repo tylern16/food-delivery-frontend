@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   currentUser!: IUser;
 
+  currentUserName!: string;
+
   constructor(private http: HttpClient) { }
 
   public addUser(user: IUser): Observable<IUser>{
@@ -29,14 +31,18 @@ export class UserService {
     return this.http.get<IUser>(`http://localhost:8080/user/find/${email}`);
   }
 
+  public getUserById(userId: number): Observable<IUser> {
+    return this.http.get<IUser>(`http://localhost:8080/user/${userId}`);
+  }
+
   public saveCurrentUser(user: IUser) {
     this.getCurrentUserByEmail(user.email).subscribe(data => {
       this.currentUser = data;
-      console.log(this.currentUser);
+      this.currentUserName = this.currentUser.name;
+      //console.log(this.currentUser);
     },
     (error: Error) => console.log(error));
   }
 
-
-
+  
 }

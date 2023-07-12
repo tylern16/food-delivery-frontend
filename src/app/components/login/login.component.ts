@@ -29,4 +29,5 @@ export class LoginComponent {
       console.log("Error on signIn on login component");
     });
   }
+
 }
