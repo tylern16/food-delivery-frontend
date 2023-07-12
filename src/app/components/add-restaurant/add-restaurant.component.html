@@ -2,22 +2,22 @@
 
 <form (ngSubmit)="onSubmit()" id="add-restaurant-form" enctype="multipart/form-data">
     <div class="form-group">
-      <h3>Add A New Restaurant</h3><br><br>
+      <h3 id="add-rest-title">New Restaurant</h3><br><br>
 
       <label for="name">Restaurant Name</label>
-      <input type="text" required="true" class="form-control" id="exampleInputEmail1" 
+      <input type="text" required="true" class="form-control rest-input" id="exampleInputEmail1" 
       [(ngModel)]="restaurant.name" name="name"
-      aria-describedby="emailHelp" placeholder="Enter Restaurant Name">
+      aria-describedby="emailHelp" placeholder="Name">
 
-      <label for="name">Cuisine</label>
-      <input type="text"  class="form-control" id="exampleInputEmail1" 
+      <label for="name">Type of Cuisine</label>
+      <input type="text"  class="form-control rest-input" id="exampleInputEmail1" 
       [(ngModel)]="restaurant.cuisine" name="email"
-      aria-describedby="emailHelp" placeholder="Enter Restaurant License">
+      aria-describedby="emailHelp" placeholder="Cuisine">
 
-      <label for="name">Address</label>
-      <input type="a" required="true" class="form-control" id="exampleInputEmail1" 
+      <label for="name">Full Address</label>
+      <input type="a" required="true" class="form-control rest-input" id="exampleInputEmail1" 
       [(ngModel)]="restaurant.address" name="email"
-      aria-describedby="emailHelp" placeholder="Enter Restaurant License">
+      aria-describedby="emailHelp" placeholder="Address">
 
       
     </div>

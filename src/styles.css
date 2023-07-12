@@ -142,4 +142,19 @@ h3 {
     padding-bottom: 2em;
 }
 
+/* Add Restaurant Form */
+
+#add-restaurant-form {
+    width: 60%;
+    margin: 2em auto;
+}
+
+#add-rest-title {
+    text-align: center;
+}
+
+.rest-input {
+    margin-bottom: 1em;
+}
+
 
