@@ -1,7 +1,7 @@
-<div class="jumbotron">
+<div class="jumbotron login">
     <div class="container">
-      <h1 class="display-3">Doordash</h1>
-      <p>Use this app to register your customers and easily add their dependents. It includes order processing with photo ID upload so your customers can securely make purchase orders.</p>
+      <h1 class="display-3">Uber Eats for Merchants</h1>
+      <p>Get to where you want to grow with Uber Eats for restaurants, grocery, convenience, and more</p>
     </div>
   </div>
   
@@ -13,15 +13,15 @@
         </h1>
       </div>
       <div class="card-body">
-        <div class="row">
+        <div class="row login-field">
           Email: <input type="text" name="email" [(ngModel)]="user.email">
         </div>
-        <div class="row">
+        <div class="row login-field">
           Password: <input type="password" name="password" [(ngModel)]="user.password">
         </div>
       </div>
       <div class="card-footer">
-        <div class="row">
+        <div class="row login-btn-container">
           <button (click)="signIn()" class="btn btn-success login-btn">Login</button>
         </div>
       </div>
