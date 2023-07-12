@@ -1,28 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" routerLink="/home">Uber Eats for Merchants</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="d-flex justify-content-between" style="width: 100%;">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link"  routerLinkActive="active" routerLink="/home">Home <span class="sr-only"></span></a>
+            <li class="nav-item active" *ngIf="isAuthenticated()">
+              <a class="nav-link"  routerLinkActive="active" routerLink="/home" >Home<span class="sr-only"></span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isAuthenticated()">
                 <a class="nav-link"  routerLinkActive="active" routerLink="/restaurant">Restaurants</a>
             </li>
         </ul>
-        <ul class="navbar-nav justify-content-end">
-            <li class="nav-item auth">
+        <ul class="navbar-nav auth-container">
+            <li class="nav-item auth" *ngIf="!isAuthenticated()">
               <a class="nav-link"  routerLinkActive="active" routerLink="/login">Login</a>
             </li>
-            <li class="nav-item auth">
+            <li class="nav-item auth" *ngIf="isAuthenticated()">
                 <a class="nav-link"  routerLinkActive="active" routerLink="/logout">Logout</a>
             </li>
-            <li class="nav-item auth">
+            <li class="nav-item auth" *ngIf="!isAuthenticated()">
                 <a class="nav-link"  routerLinkActive="active" routerLink="/register">Register</a>
             </li>
             <!-- <li class="nav-item auth" *ngIf="isAuthenticated()">
                 <a class="nav-link">{{user.name}}</a>
             </li> -->
         </ul>
+        </div>
     </div>
 </nav>
 

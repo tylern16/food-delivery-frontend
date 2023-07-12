@@ -1,3 +1,6 @@
+body {
+    background-color: rgb(139, 139, 139);
+}
 
 #main-content {
     position: relative;
@@ -102,6 +105,13 @@ button {
     margin: 2em auto;
 }
 
+#no-dishes {
+    width: 60%;
+    margin: 5em auto;
+    text-align: center;
+}
+
+
 /* New dish */
 
 #add-dish-form {
@@ -156,5 +166,7 @@ h3 {
 .rest-input {
     margin-bottom: 1em;
 }
+
+/* Header */
 
 
