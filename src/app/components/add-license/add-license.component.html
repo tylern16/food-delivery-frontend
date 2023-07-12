@@ -1,21 +1,29 @@
-<div class="row">
-    <div class="col-8">
-      <label class="btn btn-default p-0">
-        <input type="file" (change)="selectFile($event)" />
-      </label>
-    </div>
-  
-    <div class="col-4">
-      <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
-        Upload
-      </button>
-    </div>
+<div id="file-upload-container">
+  <h3 id="upload-title">Upload Your Food Safety License</h3>
+  <div class="row" id="file-upload">
+      <div class="col-8">
+        <label class="btn btn-default p-0">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+      </div>
+    
+      <div class="col-4">
+        <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button>
+      </div>
+  </div>
+
+
+  <div *ngIf="progress == 100" class="upload-success">
+    <h5>Upload Successful!!</h5>
+    <button routerLink="/restaurant" routerLinkActive="active" type="button" class="btn btn-primary">Go to Restaurants</button>
+  </div>
 </div>
 
 
+<router-outlet></router-outlet>
 
-
-  
 <!-- <div *ngIf="currentFile" class="progress my-3">
     <div
       class="progress-bar progress-bar-info progress-bar-striped"
@@ -28,11 +36,3 @@
       {{ progress }}%
     </div>
 </div> -->
-
-<div *ngIf="progress == 100" class="upload-success">
-  <h5>Upload Successful!!</h5>
-  <button routerLink="/restaurant" routerLinkActive="active" type="button" class="btn btn-primary">Go to Restaurants</button>
-</div>
-
-
-<router-outlet></router-outlet>
